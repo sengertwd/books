@@ -9,6 +9,7 @@ var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var fs = require('fs');
+var User = require('./models/User.js');
 
 var app = express();
 
@@ -40,6 +41,15 @@ app.get('/form', function(req, res){
 			res.writeHead(200, {'Content-Type': 'text/html'});
 			res.end(content, 'utf-8');
 		}
+	});
+});
+
+app.post('/signup', function(req, res){
+	var username = req.body.username;
+	var password = req.body.password;
+	User.addUser(username, password, function(err, user){
+		if (err) throw err;
+		res.redirect('/form');
 	});
 });
 
