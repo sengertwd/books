@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <meta>
+  <title>template</title>
+  <style>
+    div.styled {
+      left: 50px;
+      position: absolute;
+      top: 50px;
+    }
+  </style>
+  <script>
+    // Goes into a js file
+    window.addEventListener('load',windowLoaded, false);
+    function windowLoaded (){
+
+      canvasApp();
+
+      function canvasSupport(canvas){
+        if(!canvas || !canvas.getContext){
+          return;
+        }
+      }
+
+      function canvasApp (){
+
+        var canvas = document.getElementById('canvas');
+        canvasSupport(canvas);
+        var context = canvas.getContext("2d");
+
+        drawScreen();
+
+        function drawScreen(){
+          context.fillStyle = "#AAA";
+          context.fillRect(0,0,200,200);
+          context.fillStyle = "#000"
+          context.font = "20px _sans";
+          context.textBaseline = "top";
+          context.fillText("Canvas!",0,0);
+        }
+
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="styled">
+    <canvas id="canvas" height="500" width="500">Your browser does not support Canvas!</canvas>
+  </div>
+</body>
+</html>
