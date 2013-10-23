@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta>
-  <title>template</title>
+  <title>The Basic Rectangle</title>
   <style>
     div.styled {
       left: 50px;
@@ -30,12 +30,12 @@
         drawScreen();
 
         function drawScreen(){
-          context.fillStyle = "#AAA";
-          context.fillRect(0,0,200,200);
-          context.fillStyle = "#000"
-          context.font = "20px _sans";
-          context.textBaseline = "top";
-          context.fillText("Canvas!",0,0);
+          context.fillStyle = '#000';
+          context.strokeStyle = '#F0F';
+          context.lineWidth = 2;
+          context.fillRect(10,10,40,40);
+          context.strokeRect(0,0,60,60);
+          context.clearRect(20,20,20,20);
         }
 
       }

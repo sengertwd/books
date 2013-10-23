@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+  <meta>
+  <title>The Path : Arcs</title>
+  <style>
+    div.styled {
+      left: 50px;
+      position: absolute;
+      top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div class="styled">
+    <canvas id="canvas" height="500" width="500">Your browser does not support Canvas!</canvas>
+  </div>
+  <script>
+    // Goes into a js file
+    window.addEventListener('load',windowLoaded, false);
+    function windowLoaded (){
+
+      canvasApp();
+
+      function canvasApp (){
+
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext("2d");
+
+        drawScreen();
+
+        function drawScreen(){
+          context.beginPath();
+          context.strokeStyle = '#0F0';
+          context.lineWidth = 5;
+          // Starts at 3 o'clock
+          context.arc( 100, 100, 20, (Math.PI/180)*10, (Math.PI/180)*80, false);
+          context.stroke();
+          context.closePath();
+
+          // Counter Clockwise
+          context.beginPath();
+          context.strokeStyle = '#000';
+          context.lineWidth = 5;
+          context.arc( 100, 100, 20, (Math.PI/180)*0, (Math.PI/180)*120, true);
+          context.stroke();
+          context.closePath();
+
+          // Simple toArc
+          context.beginPath();
+          context.strokeStyle = '#FF0'
+          context.moveTo(0,0);
+          context.lineTo(100,200);
+          context.arcTo(350,350,100,100,20);
+          context.stroke();
+          context.closePath();
+
+          // Simple Quadratic Curve
+          context.beginPath();
+          context.strokeStyle = '#F0F';
+          context.moveTo(0,0);
+          context.quadraticCurveTo(100,25,0,50);
+          context.stroke();
+          context.closePath();
+
+          // Simple Bezier Curve
+          context.beginPath();
+          context.strokeStyle = '#0FF';
+          context.moveTo(300,0);
+          context.bezierCurveTo(0,125,600,175,300,300);
+          context.stroke();
+          context.closePath();
+        }
+
+      }
+    }
+  </script>
+</body>
+</html>
